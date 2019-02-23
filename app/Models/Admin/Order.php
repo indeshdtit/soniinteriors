@@ -30,18 +30,21 @@ class Order extends Model
             switch ($action)
             {
                 case 'update':
-                    $order_detail->customer_name = $data['customer_name'];
                     $order_detail->date_written = $data['date_written'] ? date('Y-m-d H:i:s', strtotime($data['date_written'])) : null;
+                    $order_detail->customer_name = $data['customer_name'];
+                    $order_detail->pulled_by = $data['pulled_by'];
                     $order_detail->origination_id = $data['origination_id'];
                     $order_detail->date_picked_up = $data['date_picked_up'] ? date('Y-m-d H:i:s', strtotime($data['date_picked_up'])) : null;
+                    $order_detail->status = $data['status'];
                     $order_detail->order_picked_up_at = $data['order_picked_up_at'];
                     $order_detail->is_partial_order = $data['is_partial_order'];
-                    $order_detail->status = $data['status'];
+                    $order_detail->shipped_by = $data['shipped_by'];
+                    $order_detail->checked_by = $data['checked_by'];
+                    $order_detail->notes = $data['notes'];
                     break;
 
                 case 'delete':
-                    $order_detail->status = Config::get('constants.status.inactive');
-                    $order_detail->deleted_at = date('Y-m-d H:i:s');
+                    $order_detail->is_void = true;
                     break;
                 
                 default:
@@ -72,7 +75,8 @@ class Order extends Model
             }
             catch (\Exception $e)
             {
-                print_r($e->getMessage());die;
+               //print_r($e -> getMessage());
+               //die();
                 #code...
             }
         }

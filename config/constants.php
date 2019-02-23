@@ -6,7 +6,6 @@
         ],
         'status' => [
             'active' => 1,
-            'inactive' => 0,
             'completed' => 2
         ],
         'invoice_number' => 10000

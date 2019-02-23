@@ -30,5 +30,6 @@ Route::group(['prefix' => ''], function() {
 		Route::get('order/edit-history/{order_id}', 'Admin\OrdersController@order_edit_history')->name('admin_order_edit_history');
 		
 		Route::post('delete_attachment', 'Admin\OrdersController@delete_attachment')->name('admin_delete_attachment');
+		Route::get('download-receipt/{order_id}', 'Admin\OrdersController@download_receipt')->name('admin_download_receipt');
 	});
 });
