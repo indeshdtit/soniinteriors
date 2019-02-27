@@ -73,6 +73,9 @@
                                                 <span>{{ \App\Models\Admin\Origination::getNameById($value->origination_id) }}</span>
                                             </td>
                                             <td class="v-align-middle semi-bold">
+                                                <span>{{ $value->date_picked_up ? date('m/d/Y', strtotime($value->date_picked_up)) : '' }}</span>
+                                            </td>
+                                            <td class="v-align-middle semi-bold">
                                                 <span>
                                                     @if(is_null($value->status))
                                                         {{-- code... --}}
@@ -86,9 +89,6 @@
                                                         @endif
                                                     @endif
                                                 </span>
-                                            </td>
-                                            <td class="v-align-middle semi-bold">
-                                                <span>{{ $value->date_picked_up ? date('m/d/Y', strtotime($value->date_picked_up)) : '' }}</span>
                                             </td>
                                             <td class="v-align-middle semi-bold">
                                                 <span>

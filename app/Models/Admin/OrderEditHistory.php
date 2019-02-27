@@ -16,7 +16,7 @@ class OrderEditHistory extends Model
     	return self::where([
     		'order_id' => $order_id
     	])
-    	->orderBy('id', 'DESC')
+    	// ->orderBy('id', 'DESC')
     	->get();
     }
 }

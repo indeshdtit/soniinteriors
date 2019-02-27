@@ -113,10 +113,15 @@
                                             <span>
                                                 <small>
                                                 <a href="{{ route('admin_download_receipt', $value->id) }}">Download Receipt</a>
+                                                <span>&nbsp;|&nbsp;</span>
                                                 @if(!$value->is_void)
-                                                    <span>&nbsp;|&nbsp;</span>
                                                     <a href="javascript:void(0);" data-location="{{ route('admin_delete_order', $value->id) }}" class="conf_btn">Void</a>
+                                                @else
+                                                    <a href="javascript:void(0);" data-location="{{ route('admin_undelete_order', $value->id) }}" class="conf_btn">Unvoid</a>
                                                 @endif
+                                                <span>&nbsp;|&nbsp;</span>
+                                                <?php $pdelloc = route('admin_permanent_delete_order', $value->id); ?>
+                                                <a data-toggle="modal" data-target="#password_confirm_modal" href="javascript:void(0);" onclick="$('#pdelbtn').attr('data-location', '<?php echo $pdelloc; ?>');">Delete</a>
                                                 </small>
                                             </span>
                                         </td>
@@ -182,5 +187,35 @@
             // $('.add_new_btn').after('&nbsp;'+ $('.dt-buttons').html());
             // $('.card-header').find('.buttons-pdf').attr('onclick', $('.dt-buttons .buttons-pdf').click());
         });
+
+        function delete_order(ele)
+        {
+            if (window.confirm('Are you sure?'))
+            {
+                window.location.href = $(this).attr('data-location') + $("#deletion_password").val();
+            }
+        }
     </script>
+
+    <div id="password_confirm_modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Confirm Password</h4>
+                </div>
+                <div class="modal-body pt-4">
+                    <div class="form-group">
+                        <input type="password" name="deletion_password" class="form-control" id="deletion_password" placeholder="Password" required="">
+                    </div>
+                    <div class="form-group">
+                        <button data-location="" class="btn btn-danger conf_btn btn-block" data-src="pDel" id="pdelbtn">Proceed and Delete</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 @stop

@@ -26,7 +26,9 @@ Route::group(['prefix' => ''], function() {
 		Route::get('orders', 'Admin\OrdersController@index')->name('admin_orders');
 		Route::any('order/add', 'Admin\OrdersController@add_order')->name('admin_add_order');
 		Route::any('order/edit/{order_id?}', 'Admin\OrdersController@edit_order')->name('admin_edit_order');
+		Route::get('order/permanent_delete/{order_id}/{pwd?}', 'Admin\OrdersController@permanent_delete')->name('admin_permanent_delete_order');
 		Route::get('order/delete/{order_id}', 'Admin\OrdersController@delete_order')->name('admin_delete_order');
+		Route::get('order/undelete/{order_id}', 'Admin\OrdersController@undelete_order')->name('admin_undelete_order');
 		Route::get('order/edit-history/{order_id}', 'Admin\OrdersController@order_edit_history')->name('admin_order_edit_history');
 		
 		Route::post('delete_attachment', 'Admin\OrdersController@delete_attachment')->name('admin_delete_attachment');

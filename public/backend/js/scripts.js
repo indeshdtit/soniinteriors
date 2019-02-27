@@ -8,7 +8,13 @@
         $(".conf_btn").click(function(event) {
             if (window.confirm('Are you sure?'))
             {
-                window.location.href = $(this).attr('data-location');
+                var hrefStr = $(this).attr('data-location');
+                if (typeof($(this).attr('data-src')) != 'undefined')
+                {
+                    hrefStr += '/' + $('#deletion_password').val();
+                }
+                
+                window.location.href = hrefStr;
             }
         });
     });

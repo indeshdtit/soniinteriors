@@ -12,7 +12,7 @@
 
     <div class="login-container bg-white">
         <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
-            <img src="{{ URL::asset('backend/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('backend/img/logo.png') }}" data-src-retina="{{ URL::asset('backend/img/logo_2x.png') }}" width="78" height="22">
+            <img src="{{ URL::asset('backend/img/logo.png') }}" alt="logo" data-src="{{ URL::asset('backend/img/logo.png') }}" data-src-retina="{{ URL::asset('backend/img/logo.png') }}" width="78" height="22">
             <p class="p-t-35">Sign into your account</p>
 
             <form id="form-login" class="p-t-15" role="form" action="{{ route('admin_login') }}" method="POST">
